@@ -7,6 +7,7 @@ Deliverables
 - A snap shot picture -> docs/training_tensorboard.png
 - A explain model fitted -> docs/OCR report.pdf
 - Code of model finetuning pipeline, evaluation -> ocr_training.py, models/metrics.py, models/trainer.py
-- System design of API service -> pipeline_design_api.png
+- Pipeline design of OCR functionality -> pipeline_design_api.png
 - Api spec -> api/open_api.yaml
-- Pipeline design 
+- Code of api -> api/main.py
+- Code of unit test -> api/test/test.py
