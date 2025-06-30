@@ -6,4 +6,4 @@ Deliverables
 - Model finetuning strategy -> docs/OCR report.pdf
 - A snap shot picture -> docs/training_tensorboard.png
 - A explain model fitted -> docs/OCR report.pdf
-- Code of model finetuning pipeline, evaluation -> ocr_training.py
+- Code of model finetuning pipeline, evaluation -> ocr_training.py, models/metrics.py, models/trainer.py
