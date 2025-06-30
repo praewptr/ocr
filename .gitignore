@@ -38,7 +38,7 @@ checkpoints/
 
 # Datasets (optional)
 data/raw/
-data/processed/
+
 
 # FastAPI auto-generated
 *.log
