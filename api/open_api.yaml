@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: OCR Inference API
+  version: 1.0.0
+  description: An API service for performing Optical Character Recognition on uploaded images.
+
+servers:
+  - url: http://127.0.0.1:8000
+    description: Local development server
+
+paths:
+  /ocr:
+    post:
+      summary: Perform OCR on an uploaded image
+      description: This endpoint accepts an image file and returns the detected text, its confidence score, and its bounding box coordinates.
+      requestBody:
+        description: Image file to perform OCR on (JPG, JPEG, PNG)
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The image file to upload.
+                  
+      responses:
+        '200':
+          description: Successful OCR processing.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: The recognized text from the image.
+                          example: "Hello World"
+                        confidence:
+                          type: number
+                          format: float
+                          description: The confidence score of the OCR result (0.0 to 1.0, rounded to 4 decimal places).
+                          example: 0.9876
+                        bounding_box:
+                          type: object
+                          properties:
+                            top_left:
+                              type: array
+                              items:
+                                type: number
+                                format: float
+                              description: [x, y] coordinates of the top-left corner.
+                              example: [10.0, 20.5]
+                            top_right:
+                              type: array
+                              items:
+                                type: number
+                                format: float
+                              description: [x, y] coordinates of the top-right corner.
+                              example: [150.2, 20.5]
+                            bottom_right:
+                              type: array
+                              items:
+                                type: number
+                                format: float
+                              description: [x, y] coordinates of the bottom-right corner.
+                              example: [150.2, 40.8]
+                            bottom_left:
+                              type: array
+                              items:
+                                type: number
+                                format: float
+                              description: [x, y] coordinates of the bottom-left corner.
+                              example: [10.0, 40.8]
+        '400':
+          description: Invalid file type.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Invalid file type. Please upload an image."
+        '500':
+          description: Internal Server Error during OCR processing.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "An error occurred during image processing: [specific error message]"
