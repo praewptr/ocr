@@ -1,2 +1,9 @@
 Deliverables 
-- Design of automated data labeling pipeline ->
+- Design of automated data labeling pipeline -> docs/labelling_pipeline.png
+- Code of pipeline implementation -> data_labelling_pipeline.py
+- Labeled data -> data/processed/ocr_dataset/images ()
+- A model explantion -> docs/OCR report.pdf
+- Model finetuning strategy -> docs/OCR report.pdf
+- A snap shot picture -> docs/training_tensorboard.png
+- A explain model fitted -> docs/OCR report.pdf
+- Code of model finetuning pipeline, evaluation -> ocr_training.py
